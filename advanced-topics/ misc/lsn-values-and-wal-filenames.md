@@ -92,3 +92,4 @@ WAL: 00000001 0000005D 00000025
 - [Postgres WAL Files and Sequence Numbers](https://www.crunchydata.com/blog/postgres-wal-files-and-sequuence-numbers)
 - [WAL, LSN, and File Names](https://fluca1978.github.io/2020/05/28/PostgreSQLWalNames)
 
+感谢您的阅读！像往常一样：请与您的同事和与 #PostgreSQL 一起工作的朋友分享。
