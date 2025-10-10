@@ -82,6 +82,23 @@ ORDER BY 2, 3;
 
 在某些情况下，元数据查询可能很重、很慢。如果是这样，该怎么办：
 
+1. 考虑缓存以减少元数据查询的频率和必要性。
+2. 检查目录膨胀。例如，由于频繁的 DDL、使用临时表等，pg_class可能会变得臃肿。不幸的是，在这种情况下，需要 VACUUM FULL（pg_repack无法重新打包系统目录）。如果需要，不要忘记 Postgres 中零停机时间 DDL 的黄金法则--[使用低lock_timeout和重试](https://postgres.ai/blog/20210923-zero-downtime-postgres-schema-migrations-lock-timeout-and-retries)。
 
+# INFORMATION_SCHEMA
 
+系统目录和视图是查询表和索引元数据的"native"方式，但不是标准的。标准方式称为 INFORMATION_SCHEMA，Postgres 支持它遵循 SQL标准：[文档](https://www.postgresql.org/docs/current/information-schema.html) `INFORMATION_SCHEMA` 使用什么：
+
+- 使用信息架构进行简单的跨数据库兼容元数据查询。
+- 使用本机系统目录进行更复杂的特定于 Postgres 的查询，或者当您需要详细的内部信息时。
+
+# pg_stat_activity 不是表
+
+重要的是要记住，在查询元数据时，您可能会处理一些行为不正常的东西，即使它看起来是这样。
+
+例如，当您从pg_stat_activity读取记录时，您不会处理表数据的一致快照：读取第一行和理论上最后一行是在不同的时间点生成的，您可能会看到未同时运行的查询。
+
+这种现象也解释了为什么 `select now() - query_start from pg_stat_activity;` 可能会给你负值：`now()` 在事务开始时执行一次，并且无论你调用多少次，都不会在事务中改变它的值。
+
+要获得精确的时间间隔，请改用 `clock_timestamp()select clock_timestamp() - query_start from pg_stat_activity; ` ）。
 
