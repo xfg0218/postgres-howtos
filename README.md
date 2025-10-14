@@ -35,12 +35,31 @@ schema 设计的最佳实践、安全的 DDL 操作、数据类型选择以及�
 
 深入探究 PostgreSQL 的内部机制、扩展、复制以及其他高级功能。
 
+### 杂项
+
+各种高级内容和技术。
+
+- [estimate-yoy-table-growth](advanced-topics/misc/estimate-yoy-table-growth.md)
+- [how-many-tuples-can-be-inserted-in-a-page](advanced-topics/misc/how-many-tuples-can-be-inserted-in-a-page.md)
+- [how-to-compile-postgres-on-ubuntu-22.04](advanced-topics/misc/how-to-compile-postgres-on-ubuntu-22.04.md)
+- [how-to-find-the-best-order-of-columns-to-save-on-storage](advanced-topics/misc/how-to-find-the-best-order-of-columns-to-save-on-storage.md)
+- [how-to-help-others](advanced-topics/misc/how-to-help-others.md)
+- [how-to-install-postgres-16-with-plpython3u](advanced-topics/misc/how-to-install-postgres-16-with-plpython3u.md)
+- [how-to-use-openai-apis-in-postgres](advanced-topics/misc/how-to-use-openai-apis-in-postgres.md)
+- [how-to-work-with-metadata](advanced-topics/misc/how-to-work-with-metadata.md)
+- [lsn-values-and-wal-filenames](advanced-topics/misc/lsn-values-and-wal-filenames.md)
+- [tuple-sparsity](advanced-topics/misc/tuple-sparsity.md)
+
+### Replication
+
+- [how-to-convert-a-physical-replica-to-logical](advanced-topics/replication/how-to-convert-a-physical-replica-to-logical.md)
+- [how-to-troubleshoot-streaming-replication-lag](advanced-topics/replication/how-to-troubleshoot-streaming-replication-lag.md)
+- [zero-downtime-major-upgrade](advanced-topics/replication/zero-downtime-major-upgrade.md)
 
 
 ## 其他杂项
 
 各种 PostgreSQL 技巧、反模式以及通用建议，它们虽不属于特定类别，但了解这些内容很有价值
-
 
 # 📊 引导统计
 
